@@ -20,3 +20,12 @@
 - Added a handler_readiness function, which is just to check whether the server is health is good or not
 - Then in the main file, we made a new router using chi (we made this because we want to have sub routes, well technically we don't but just for versioning and stuff), then we just mounted this new router (v1Router) to the original base route that we created
 - Then we made an error response helper function, which will help us to know the error, (we used struct tag to mention the error for JSON), then we used the pervious function as well, then we finally made a new handler function and used it on the v1 router that we made previously
+
+## Part-4 (Setting up database)
+
+- Setted up a postgres database using docker, and added it's connection string to the .env file
+- We'll use some libraries(ORM like but not exactly an ORM) which are `github.com/kyleconroy/sqlc/cmd/sqlc@latest` and `github.com/pressly/goose/v3/cmd/goose@latest`.
+- There is no harm in commiting the vendor folder, as it isn't as large as the node module folder
+- SQLC handles our queries and Goose handles our migrations
+- We, then proceeded to writing the migratations for the database in the `sql/schema` folder, here we'll start with `001_users.sql` where we created the migrations (both up and down) then we ran those migrations via the following command `goose postgres postgresql://user:password@localhost:5432/postgres up` (we can write down migrations as well using the same command but with down instead of up) NOTE: we have to be in the same directory
+- We made a new file in the root direction named `sqlc.yaml` and we'll also create the queries folder and mention the query in the sql folder, and then we'll finally run the sqlc by the following command `sqlc generate`
