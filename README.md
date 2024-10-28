@@ -29,3 +29,9 @@
 - SQLC handles our queries and Goose handles our migrations
 - We, then proceeded to writing the migratations for the database in the `sql/schema` folder, here we'll start with `001_users.sql` where we created the migrations (both up and down) then we ran those migrations via the following command `goose postgres postgresql://user:password@localhost:5432/postgres up` (we can write down migrations as well using the same command but with down instead of up) NOTE: we have to be in the same directory
 - We made a new file in the root direction named `sqlc.yaml` and we'll also create the queries folder and mention the query in the sql folder, and then we'll finally run the sqlc by the following command `sqlc generate`
+
+## Part-5 (Using the database)
+
+- First, we'll load the database url into the environment, then we'll use the sql package from the Standard library to open the database with the mentioned syntax `conn, err := sql.Open("postgres", dbURL)`
+- We would need some driver as well (which is weird) and it comes via `github.com/lib/pq` and make sure to add the import to the top of the main file as well like this `_ github.com/lib.pq`, the underscore means that include the code in my program even though I am not calling it directly
+- Then we have to create an apiCfg which include conversion of types as well, now we can pass this apiCfg to different handlers so that they can have access to the database
