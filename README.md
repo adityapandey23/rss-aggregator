@@ -17,3 +17,5 @@
 
 - Making a helper function that will help in returning the JSON respose as per the request
 - First, we'll marshal the data, if it fails we'll write status code 500 to the client otherwise, we'll first add a header to make the client side browser know that we are sending some JSON data, then we'll write the successful code as well as the data
+- Added a handler_readiness function, which is just to check whether the server is health is good or not
+- Then in the main file, we made a new router using chi (we made this because we want to have sub routes, well technically we don't but just for versioning and stuff), then we just mounted this new router (v1Router) to the original base route that we created
