@@ -12,3 +12,8 @@
 - So, we have to first use some bits, then do `go mod vendor` which will bring the necessary code, and then we have to do `go mod tidy` to do some cleanups (yes it is confusing)
 - Wrote some simple code for creating a router, createing a server and then make it listen to the port coming from the .env file
 - Added some cors instructions which will help us to hit the server
+
+## Part-3 (Setting up a helper function)
+
+- Making a helper function that will help in returning the JSON respose as per the request
+- First, we'll marshal the data, if it fails we'll write status code 500 to the client otherwise, we'll first add a header to make the client side browser know that we are sending some JSON data, then we'll write the successful code as well as the data
