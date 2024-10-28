@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/go-chi/chi"
+	"github.com/go-chi/cors"
 	"github.com/joho/godotenv"
 )
 
@@ -17,6 +18,15 @@ func main() {
 	}
 
 	router := chi.NewRouter() // Creating a router
+
+	router.Use(cors.Handler(cors.Options{ // Technically wouldn't be so permissive
+		AllowedOrigins:   []string{"https://*", "http://*"},
+		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowedHeaders:   []string{"*"},
+		ExposedHeaders:   []string{"Link"},
+		AllowCredentials: false,
+		MaxAge:           300,
+	}))
 
 	srv := &http.Server{ // Making a server
 		Handler: router,
