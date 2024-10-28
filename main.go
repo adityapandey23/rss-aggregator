@@ -31,6 +31,7 @@ func main() {
 	// New routers
 	v1Router := chi.NewRouter()
 	v1Router.Get("/healthz", handlerReadiness) // Used the Get function to scope the request to only get requests
+	v1Router.Get("/err", handlerErr)
 
 	// Mounting the routes
 	router.Mount("/v1", v1Router)
