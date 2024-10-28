@@ -10,3 +10,4 @@
 
 - Installed the chi-router using `github.com/go-chi/chi` for routing and `github.com/go-chi/cors` for cors
 - So, we have to first use some bits, then do `go mod vendor` which will bring the necessary code, and then we have to do `go mod tidy` to do some cleanups (yes it is confusing)
+- Wrote some simple code for creating a router, createing a server and then make it listen to the port coming from the .env file
